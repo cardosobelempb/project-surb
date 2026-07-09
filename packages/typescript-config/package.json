@@ -1,0 +1,23 @@
+{
+  "name": "@repo/typescript-config",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node -e \"console.log('No dev step required for @repo/typescript-config')\"",
+    "build": "node -e \"console.log('No build step required for @repo/typescript-config')\"",
+    "test": "node -e \"console.log('No test step required for @repo/typescript-config')\"",
+    "test:watch": "node -e \"console.log('No test:watch step required for @repo/typescript-config')\"",
+    "test:coverage": "node -e \"console.log('No test:coverage step required for @repo/typescript-config')\"",
+    "typecheck": "node -e \"console.log('No typecheck step required for @repo/typescript-config')\"",
+    "lint": "node -e \"console.log('No lint step required for @repo/typescript-config')\"",
+    "format": "prettier --write \"*.json\""
+  },
+  "files": [
+    "base.json",
+    "backend.json",
+    "frontend.json",
+    "library.json",
+    "mobile.json"
+  ]
+}

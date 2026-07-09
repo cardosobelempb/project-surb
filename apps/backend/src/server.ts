@@ -1,0 +1,68 @@
+import { LoggerFactory } from "@repo/logger";
+import { buildApp } from "./app.js";
+import { envBackend } from "./config/env-backend.js";
+
+const isProduction = envBackend.NODE_ENV === "production";
+
+const PUBLIC_HOST = isProduction
+  ? envBackend.HOST
+  : (envBackend.PUBLIC_HOST ?? "localhost");
+
+const baseUrl = `http://${PUBLIC_HOST}:${envBackend.PORT}`;
+
+const logger = LoggerFactory.create("bootstrap");
+
+function logServerStarted(): void {
+  logger.info("Server started successfully", {
+    event: "SERVER_STARTED",
+    environment: envBackend.NODE_ENV,
+    host: envBackend.HOST,
+    publicHost: PUBLIC_HOST,
+    port: envBackend.PORT,
+  });
+
+  if (!isProduction) {
+    logger.info("Server URL available", {
+      event: "SERVER_URL_AVAILABLE",
+      url: baseUrl,
+    });
+
+    logger.info("Swagger documentation available", {
+      event: "SWAGGER_AVAILABLE",
+      url: `${baseUrl}/docs`,
+    });
+  }
+}
+
+function logServerError(error: unknown): void {
+  logger.error("Failed to start server", error, {
+    event: "SERVER_START_ERROR",
+  });
+}
+
+export async function startServer(): Promise<void> {
+  const app = await buildApp({
+    cors: {
+      origin: isProduction ? envBackend.CORS_ORIGINS : ["http://localhost:3000"],
+      credentials: true,
+    },
+
+    swagger: {
+      title: "Hotspot API",
+      version: "1.0.0",
+      description: "API do sistema de hotspot",
+    },
+  });
+
+  try {
+    await app.listen({
+      port: envBackend.PORT,
+      host: envBackend.HOST,
+    });
+
+    logServerStarted();
+  } catch (error) {
+    logServerError(error);
+    process.exit(1);
+  }
+}
