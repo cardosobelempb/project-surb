@@ -116,7 +116,26 @@ export default function TermsPage() {
             ))}
 
             <article>
-              <h2 className="text-xl font-bold">13. Contato</h2>
+              <h2 className="text-xl font-bold">13. Publicidade</h2>
+              <p className="mt-3 leading-8 text-muted-foreground">
+                A plataforma pode exibir anúncios de terceiros veiculados por meio do
+                Google AdSense e outras redes de publicidade. O conteúdo desses anúncios é
+                de responsabilidade exclusiva dos respectivos anunciantes, não
+                representando recomendação, aprovação ou endosso por parte da SURB. Para
+                saber como cookies de publicidade são utilizados e como desativar anúncios
+                personalizados, consulte a nossa{" "}
+                <Link
+                  href="/privacidade"
+                  className="font-medium text-surb-cyan hover:underline"
+                >
+                  Política de Privacidade
+                </Link>
+                .
+              </p>
+            </article>
+
+            <article>
+              <h2 className="text-xl font-bold">14. Contato</h2>
               <p className="mt-3 leading-8 text-muted-foreground">
                 Em caso de dúvidas sobre estes Termos, entre em contato pelo e-mail{" "}
                 <a

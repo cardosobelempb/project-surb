@@ -60,8 +60,11 @@ const sections = [
     content:
       "Utilizamos cookies para autenticação, segurança, preferências, estatísticas, análise de navegação e melhoria da experiência do usuário. O usuário poderá configurar seu navegador para bloquear cookies.",
   },
+];
+
+const closingSections = [
   {
-    title: "12. Alterações desta política",
+    title: "13. Alterações desta política",
     content:
       "A SURB poderá atualizar esta Política de Privacidade periodicamente. Alterações relevantes poderão ser comunicadas aos usuários por canais oficiais.",
   },
@@ -117,7 +120,56 @@ export default function PrivacyPage() {
             ))}
 
             <article>
-              <h2 className="text-xl font-bold">13. Contato</h2>
+              <h2 className="text-xl font-bold">
+                12. Publicidade e cookies de terceiros (Google AdSense)
+              </h2>
+              <p className="mt-3 leading-8 text-muted-foreground">
+                Este site utiliza o Google AdSense para exibir anúncios. O Google, como
+                fornecedor terceiro, e outros parceiros publicitários utilizam cookies
+                (incluindo o cookie DART) para veicular anúncios com base em visitas
+                anteriores do usuário a este site e a outros sites na internet. O uso de
+                cookies de publicidade pelo Google é regido pela{" "}
+                <a
+                  href="https://policies.google.com/technologies/ads"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-surb-cyan hover:underline"
+                >
+                  Política de Tecnologias de Anúncios do Google
+                </a>
+                . O usuário pode desativar a publicidade personalizada acessando as{" "}
+                <a
+                  href="https://adssettings.google.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-surb-cyan hover:underline"
+                >
+                  Configurações de Anúncios do Google
+                </a>
+                , ou desativar o uso de cookies de outros fornecedores para fins de
+                publicidade personalizada em{" "}
+                <a
+                  href="https://www.aboutads.info/choices/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-surb-cyan hover:underline"
+                >
+                  aboutads.info/choices
+                </a>
+                . Também é possível bloquear ou apagar cookies diretamente nas
+                configurações do navegador, sem prejuízo ao uso básico do site.
+              </p>
+            </article>
+
+            {closingSections.map((section) => (
+              <article key={section.title}>
+                <h2 className="text-xl font-bold">{section.title}</h2>
+                <p className="mt-3 leading-8 text-muted-foreground">{section.content}</p>
+              </article>
+            ))}
+
+            <article>
+              <h2 className="text-xl font-bold">14. Contato</h2>
               <p className="mt-3 leading-8 text-muted-foreground">
                 Para dúvidas, solicitações ou informações sobre privacidade, entre em
                 contato pelo e-mail{" "}
